@@ -4,7 +4,7 @@ from django.db import models
 class Video(models.Model):
     caption = models.CharField(max_length=50)
     video = models.FileField(upload_to="video/%y")
-    description = models.TextField(max_length=1000)
+    description = models.TextField(max_length=1000, null=True)
 
     def __str__(self):
         return self.caption
