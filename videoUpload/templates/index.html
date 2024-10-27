@@ -11,26 +11,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
-    <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
-    <style>
-        .video-container {
-            margin-bottom: 1.5rem;
-            /* Add some spacing between videos */
-        }
+   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 
-        /* Optional: Limit max size to keep videos medium-sized */
-        .video-container {
-            max-width: 720px;
-            /* Adjust this to control size */
-            margin: auto;
-            /* Center videos horizontally */
-        }
-
-        #previewContainer {
-            display: none;
-            margin-top: 1rem;
-        }
-    </style>
 </head>
 
 <body>
@@ -139,43 +121,7 @@
 -->
     {% include 'footer.html' %}
     </div>
+    <script src="{% static 'js/scripts.js' %}" ></script>
 </body>
-<script>
-    const fileInput = document.getElementById('fileInput');
-    const previewContainer = document.getElementById('previewContainer');
-    const previewElement = document.getElementById('previewElement');
-
-    fileInput.addEventListener('change', function (event) {
-        const file = event.target.files[0];
-        if (file && file.type.startsWith('video/')) {
-            // If the file is a valid video, generate a URL and set it as the source
-            const videoURL = URL.createObjectURL(file);
-            previewElement.src = videoURL;
-            previewElement.load(); // Reload to reflect the new source
-
-            previewContainer.style.display = 'block';
-        } else {
-            // If the file is not a video, display an alert and clear the preview
-            alert('Unsupported file type! Please upload a valid video.');
-            previewElement.src = ''; // Clear the video source
-            previewContainer.style.display = 'none'; // Hide the preview container
-        }
-    });
-</script>
-
-<script>
-    // JavaScript to handle video preview
-    const videoInput = document.getElementById('videoInput');
-    const showVideo = document.getElementById('showVideo');
-
-    videoInput.addEventListener('change', function (event) {
-        const file = event.target.files[0];  // Get the selected file
-        if (file) {
-            const videoURL = URL.createObjectURL(file);  // Create a blob URL
-            showVideo.src = videoURL;  // Set the video source
-            showVideo.load();  // Reload the video
-        }
-    });
-</script>
 
 </html>
